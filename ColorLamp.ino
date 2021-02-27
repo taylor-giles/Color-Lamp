@@ -2,9 +2,8 @@
     Version 1.1
     Author: Taylor Giles
 
-    Using code from Example Arduino Program written by
-      Sujay Phadke <electronicsguy123@gmail.com>
-      Github: @electronicsguy
+    Built using the HTTPSRedirect library by 
+      Sujay Phadke (Github: @electronicsguy)
 */
 
 #include <ESP8266WiFi.h>
@@ -27,7 +26,7 @@ const uint8_t BLUE_PIN = 13;
 const uint8_t BUTTON_PIN = 4;
 const uint8_t BUZZER_PIN = 5;
 
-const boolean DEBUGGING = true;
+const boolean DEBUGGING = false;
 
 //Server information
 const char* host = "script.google.com";
@@ -417,7 +416,7 @@ void editMode() {
   oldPass = WiFi.psk();
   WiFi.disconnect();
   WiFiManager wifiManager;
-  if(!wifiManager.startConfigPortal("Color-Lamp", "TheCoreSquad")){
+  if(!wifiManager.startConfigPortal("Color-Lamp", "PASSWORD")){
     //Pulse red light for 5 mins, then shut down
     long startMillis = millis();
     while(millis() - startMillis < 300000){
